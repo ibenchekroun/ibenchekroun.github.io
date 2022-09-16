@@ -2,66 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2022-08-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/</loc>
+    <loc>/</loc>
     <lastmod>2022-08-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/post/2022-09-15-rmarkdown/</loc>
+    <loc>/post/2022-09-15-rmarkdown/</loc>
     <lastmod>2022-08-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/designs/</loc>
+    <loc>/designs/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/portfolio/hindsight2022/</loc>
+    <loc>/portfolio/hindsight2022/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/designs/nba/</loc>
+    <loc>/designs/nba/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/portfolio/</loc>
+    <loc>/portfolio/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/techs/r-shiny/</loc>
+    <loc>/techs/r-shiny/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/techs/</loc>
+    <loc>/techs/</loc>
     <lastmod>2022-01-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/designs/decision-making/</loc>
+    <loc>/designs/decision-making/</loc>
     <lastmod>2021-03-25T19:47:09+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/portfolio/decision-maker/</loc>
+    <loc>/portfolio/decision-maker/</loc>
     <lastmod>2021-03-25T19:47:09+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/about/</loc>
+    <loc>/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://vermillion-eclair-39abdc.netlify.app/contact/</loc>
+    <loc>/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,4 +1,4 @@
-baseURL: https://vermillion-eclair-39abdc.netlify.app/
+baseURL: /
 languageCode: en-us
 title: Everything Everywhere all in R
 theme: personal-web

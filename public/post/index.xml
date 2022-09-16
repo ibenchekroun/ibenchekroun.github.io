@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Everything Everywhere all in R</title>
-    <link>https://vermillion-eclair-39abdc.netlify.app/post/</link>
+    <link>/post/</link>
     <description>Recent content in Blog on Everything Everywhere all in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vermillion-eclair-39abdc.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Investigating IMDb review bombing</title>
-      <link>https://vermillion-eclair-39abdc.netlify.app/post/2022-09-15-rmarkdown/</link>
+      <link>/post/2022-09-15-rmarkdown/</link>
       <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://vermillion-eclair-39abdc.netlify.app/post/2022-09-15-rmarkdown/</guid>
+      <guid>/post/2022-09-15-rmarkdown/</guid>
       <description>IMDb Review-bombing: from Ghostbusters (2016) to She-Hulk (2022) Every year, a few movies (and TV shows) garner an unusually high volume of terrible ratings on IMDb. The first time I took note of such “review bombing” was in 2016 with the release of the female-led Ghostbusters (2016) reboot (source). The ratings were so unusual that IMDb decided to evaluate the film’s rating with an “an alternate weighting calculation” and it now has a solid 6.</description>
     </item>
     

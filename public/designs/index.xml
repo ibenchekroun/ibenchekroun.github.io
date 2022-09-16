@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Designs on Everything Everywhere all in R</title>
+    <link>https://vermillion-eclair-39abdc.netlify.app/designs/</link>
+    <description>Recent content in Designs on Everything Everywhere all in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vermillion-eclair-39abdc.netlify.app/designs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NBA</title>
+      <link>https://vermillion-eclair-39abdc.netlify.app/designs/nba/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://vermillion-eclair-39abdc.netlify.app/designs/nba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Decision-making</title>
+      <link>https://vermillion-eclair-39abdc.netlify.app/designs/decision-making/</link>
+      <pubDate>Thu, 25 Mar 2021 19:47:09 +0200</pubDate>
+      
+      <guid>https://vermillion-eclair-39abdc.netlify.app/designs/decision-making/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

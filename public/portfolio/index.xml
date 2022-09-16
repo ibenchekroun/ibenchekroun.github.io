@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PORTFOLIO on Everything Everywhere all in R</title>
+    <link>https://vermillion-eclair-39abdc.netlify.app/portfolio/</link>
+    <description>Recent content in PORTFOLIO on Everything Everywhere all in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://vermillion-eclair-39abdc.netlify.app/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hindsight 2022 - NBA Fantasy Dashboard</title>
+      <link>https://vermillion-eclair-39abdc.netlify.app/portfolio/hindsight2022/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://vermillion-eclair-39abdc.netlify.app/portfolio/hindsight2022/</guid>
+      <description>This dashboard calculates your NBA fantasy team&amp;rsquo;s performance against an opposing team, given the players you input for both teams and given the week of performance. It&amp;rsquo;s purely historical data; the performance shows you how your team would have faired in a past week. I found it useful personally for deciding whether I should drop a specific player to pick up another specific player, in preparation for my next week&amp;rsquo;s matchup.</description>
+    </item>
+    
+    <item>
+      <title>UN Dilemma - which job should you take?</title>
+      <link>https://vermillion-eclair-39abdc.netlify.app/portfolio/decision-maker/</link>
+      <pubDate>Thu, 25 Mar 2021 19:47:09 +0200</pubDate>
+      
+      <guid>https://vermillion-eclair-39abdc.netlify.app/portfolio/decision-maker/</guid>
+      <description>This dashboard was made for a friend who was was in the middle of a stressful (but good) dilemma of having two summer job offers from the United Nations: one was with a Bangkok-based team, and the other based in NYC.
+It&amp;rsquo;s a tool that is probably not relevant to your life, but in the future I plan on generalizing it to any 2 jobs, as well as other types of decisions: which of 2 restaurants to eat at, which of 2 shows to watch.</description>
+    </item>
+    
+  </channel>
+</rss>

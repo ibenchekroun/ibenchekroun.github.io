@@ -6,11 +6,11 @@
     <description>Recent content in Blog on Everything Everywhere all in R</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Investigating IMDb review bombing</title>
       <link>/post/2022-09-15-rmarkdown/</link>
-      <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 14 Sep 2022 00:00:00 +0000</pubDate>
       
       <guid>/post/2022-09-15-rmarkdown/</guid>
       <description>IMDb Review-bombing: from Ghostbusters (2016) to She-Hulk (2022) Every year, a few movies (and TV shows) garner an unusually high volume of terrible ratings on IMDb. The first time I took note of such “review bombing” was in 2016 with the release of the female-led Ghostbusters (2016) reboot (source). The ratings were so unusual that IMDb decided to evaluate the film’s rating with an “an alternate weighting calculation” and it now has a solid 6.</description>

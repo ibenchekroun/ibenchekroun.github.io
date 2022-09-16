@@ -20,8 +20,8 @@ params:
     main: 'Everything Everywhere All in R'
     sub: A personal outlet for data exploration of movies, and hopefully other stuff.
   main:
-    latestPublishHeader: Most recent post
-  mainSections: post
+    latestPublishHeader: "NOTE: this website is very much a work in progress. ignore the `made with <3` written at the bottom - I did not write that."
+  mainSections: 
   notFound:
     gopher: /images/groundug.png
     h1: Sorry, 

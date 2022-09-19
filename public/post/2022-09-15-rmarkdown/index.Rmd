@@ -67,7 +67,7 @@ all_movies_with_ratings_df$Gender_rating_gap <- with(all_movies_with_ratings_df,
 
 ## IMDb Review-bombing: from Ghostbusters (2016) to She-Hulk (2022)
 
-Every year, a few movies (and TV shows) garner an unusually high volume of terrible ratings on IMDb. The first time I took note of such "review bombing" was in 2016 with the release of the female-led [Ghostbusters (2016)](https://www.imdb.com/title/tt1289401/?ref_=nv_sr_srsg_6) reboot ([source](https://screencrush.com/ghostbusters-imdb-what-the/)). The ratings were so unusual that IMDb decided to evaluate the film's rating with an ["an alternate weighting calculation"](https://www.imdb.com/title/tt1289401/ratings/?ref_=tt_ov_rt) and it now has a solid 6.9/10.     
+Every year, a few movies (and TV shows) garner an unusually high volume of terrible ratings on IMDb. The first time such "review bombing" caught my attention was in 2016 with the release of the female-led [Ghostbusters (2016)](https://www.imdb.com/title/tt1289401/?ref_=nv_sr_srsg_6) reboot. The ratings were so irregular that IMDb decided to employ an ["an alternate weighting calculation"](https://www.imdb.com/title/tt1289401/ratings/?ref_=tt_ov_rt) and it now has a solid 6.9/10.     
 
 <center> 
 ![Ghostbusers (2016) IMDb ratings distribution](ghostbusers_screenshot.png){width=85%} ![She-Hulk (2022) IMDb ratings distribution](shehulk_screenshot.png){width=85%}
@@ -76,18 +76,22 @@ Every year, a few movies (and TV shows) garner an unusually high volume of terri
 More recently, Marvel's latest [She-Hulk: Attorney at Law](https://www.imdb.com/title/tt10857160/?ref_=nv_sr_srsg_0) suffers from 37.5% of all its ratings being 1/10s (as of September 14, 2022). A back-and-forth debate of "this screams misogyny" and "well why don't [Wonder Woman](https://www.imdb.com/title/tt0451279/?ref_=nv_sr_srsg_0) and [Kill Bill](https://www.imdb.com/title/tt0266697/?ref_=nv_sr_srsg_0) also have low ratings then?" plagued my social media. Though we can always come up with women-starring movies appreciated by IMDb users, it does not mean that the attacks on She-Hulk and Ghostbusters are not founded on misogyny. A lot of misogynists love women - as long as they fit in the box of what a woman should be and do. Maybe She-Hulk and Ghostbusters are outside of that box, or maybe they truly are terrible.
 
 ### Question of interest
-The goal of this post is to use my amateur web scraping skills to explore the following question:<font size="5"> <strong> are specific kinds of movies more likely to encounter hate on IMDb than others? </strong> </font> Are movies with a woman lead more likely to be hated on than movies with a non-woman lead? How about if the two leads are women? If it was (co-)written by a woman, or (co-)directed by a woman? I'll also look into non-gender variables obtainable on IMDb. The full list of variables considered, with their definitions, is displayed in the [Glossary](Glossary).   
+The goal of this post is to use my amateur web scraping and more-than-amateur data analysis skills to explore the following question:<font size="5"> <strong> are specific kinds of movies more likely to encounter hate on IMDb than others? </strong> </font> Are movies with a woman lead more likely to be hated on than movies with a non-woman lead? How about if the two leads are women? If it was (co-)written by a woman, or (co-)directed by a woman? I'll also look into non-gender variables obtainable on IMDb. The full list of variables considered, and their definitions, is displayed in the [Glossary](Glossary).   
 
 ### How do we measure hate? What constitutes a hated movie?  
 
-By my choosing, <font size="3"> <strong> a movie's hate will be measured by the proportion of IMDb ratings that are 1/10</strong> </font>. The more 1/10 ratings a movie gets, the more hated it is. For this analysis, a movie will be considered to be 'Hated' if it is among the 100 films with the highest proportion of 1/10 IMDb ratings. Again, classifying movies into Hated or Not Hated was a personal choice, and the way to define a Hated movie as well. In this way, we can look at each kind of movie (eg woman-led, Horror, etc) and find the proportion of them that are Hated, giving us a naive estimate for the probability of hating a specific kind of movie. An alternative analysis I considered was to instead determine the average degree of Hate for each specific kind of movie. My belief is that the most extreme cases of IMDb hate are more likely to reveal bias user prejudice than a mean or median of all movies. I'm curious whether looking at the mean/median hate will give similar results, though, so at the end I also try that approach to compare. 
+By my choosing, <font size="3"> <strong> a movie's hate will be measured by the proportion of IMDb ratings that are 1/10</strong> </font>. The more 1/10 ratings a movie gets, the more hated it is. 
+
+A movie will be considered to be 'Hated' if it is one of the 100 most hated films in its Metascore group, ie if it is among the 100 films with the highest proportion of 1/10 IMDb ratings. Classifying movies into Hated or Not Hated was a personal choice, and so was the way a Hated movie is defined. I like this approach as it allows us to look at each kind of movie (eg woman-led, Horror, etc) and find the proportion of them that are Hated, giving us a naive estimate for the probability of hating a specific kind of movie. We can then compare that to the proportion of the other movies (eg non-woman-led, non-Horror, etc) that are Hated. If the difference is large enough for us, then we can conclude IMDb users are biased against/in favour of those kinds of movies.  
+
+<font size = "1.5"> Note: An alternative analysis could be to instead determine the average degree of Hate for each specific kind of movie. For instance, we could take the mean or median proportion of 1/10 reviews for woman-led films and compare to the same metric but for non-woman-led films. My belief is that the most extreme cases of IMDb hate, ie the 100 most hated films, are more likely to reveal user prejudice than the average hate across all movies. </font> 
 
 #### Grouping movies by Metascore Rating
-Of course, a movie with a high proportion of 1/10s could simply be a terrible movie (as the "What about Kill Bill and Wonder Woman" crowd would argue). My proposed solution to differentiate the terrible movies from the not terrible movies is by separating movies based on their Metacritic's Metascore Ratings. Metacritic splits movies into [three tiers](https://www.metacritic.com/about-metascores): 1. Metascore between 61-100, 2. Metascore between 40-60 and 3. Metascore between 1-39. From hereafter, the 3 groups will be referred as Favourable, Mixed, and Unfavourable movies, respectively for brevity's sake. Since movies are grouped with similarly-rated films, those with more 1/10 ratings can be interpreted as more hated rather than worse in quality. 
+Now, a movie with a high proportion of 1/10s could simply be a terrible movie (as the "What about Kill Bill and Wonder Woman" crowd would argue). My proposed solution to differentiate the terrible movies from the not terrible movies is by separating films based on their Metacritic's Metascore Ratings. Metacritic splits movies into [three tiers](https://www.metacritic.com/about-metascores): 1. Metascore between 61-100, 2. Metascore between 40-60 and 3. Metascore between 1-39. From hereafter, the 3 groups will be referred as Favourable, Mixed, and Unfavourable movies, respectively for brevity's sake. Since movies are grouped within similarly-rated films, those with more 1/10 ratings can be interpreted as more hated rather than worse in quality. 
 
 ##### Why Metascore?    
 <span style="color:grey"> 
-<font size = "2"> If you do not care, please skip right to [Films included in analysis]. 
+<font size = "2"> Don't care? Skip right to [Films included in analysis]. 
 <span style="color:grey"> 
 <font size = "2">    
 Why you might not like Metascore:          </font> 
@@ -107,7 +111,7 @@ Why I like Metascore:
 </ul>
 In my opinion, the pros outweigh the cons. I believe that a Metacritic-liked film with a high proportion of 1/10 ratings on IMDb is likely a victim of unjust review bombing. 
 
-Maybe you don't. If it helps convince you, below is a chart of the Metascore ratings of the 2400+ movies released between 2000 and 2019 that received 50K+ IMDb ratings; please <b> feel free to hover over movies with high, medium, and low metascores </b>. Or in the table below (Table 1), <b> feel free to look up the title of any movie in the Search bar to see its Metascore rating </b>. </font>
+Maybe you're still not convinced. If it helps, below is a chart of the Metascore ratings of the 2400+ movies released between 2000 and 2019 that received 50K+ IMDb ratings; please <b> feel free to hover over movies with high, medium, and low Metascores </b>. Or in the table below (Table 1), <b> you can look up the title of any movie in the Search bar to see its Metascore rating </b>. </font>
 <!-- MIGHT DELETE: If afterwards you still do not trust Metascore, then the analysis is not wasted on you. A revealed bias, whether you believe it to be on IMDb or Metascore's side, is a revealed bias nonetheless and we learn to not trust movie-rating platforms for certain kinds of movies. -->
 
 ```{r, include = FALSE}
@@ -166,13 +170,12 @@ datatable(all_movies_with_ratings_df50K %>% arrange((Title_year)) %>% select(Tit
 
 # c("#86af49", "#DAA520", "#bc5a45")
 ```
-Note: in the future, I plan on investigating more thoroughly the differences between IMDb, Metascore, Rotten Tomatoes Critics and Rotten Tomatoes Audience scores to better identify each platform's biases.  
-
+  
 </span>
 </font>
       
 ### Films included in analysis
-If you do not care, please skip right to [Results].    
+Don't care? Skip to [Results].    
 
 Only movies released in the last two decades (2000-2019) will be included in this analysis. Movies with fewer than 50,000 ratings on IMDb are removed so that the films we investigate are more likely to be known by the average moviegoer (and reader of this post). Finally, we also removed movies not rated by Metascore. 2,417 movies on IMDb fit this criteria. 
 
@@ -197,7 +200,7 @@ all_movies_with_ratings_df50K %>% group_by(Metascore_Score_Meaning) %>% count() 
 ```
        
 #### How hated are the Hated movies?
-The top 100 hated films for each group are determined. The proportion of 1/10 IMDb ratings for Hated movies ranges from      
+The top 'Hated' films, ie the 100 most hated films for each Metascore group, are determined. The proportion of 1/10 IMDb ratings for Hated movies ranges from      
 
 <ul> 
 <br>
@@ -587,8 +590,8 @@ fig3 <- fig3 %>% layout(
 * Horror: <font size = "3"> <strong> Favourable Horror films are 3.6x as likely to be hated as Favourable non-Horror films. </strong> </font> This stark difference is also observed in Mixed movies.   
 * Women: For Favourable movies, <font size = "3"><strong> Woman-led films are 1.9x more likely to be hated than non-Woman-led films. </strong></font> For Mixed movies, the gender effect is even stronger: films with a Woman Lead, 2 Women Leads, and a Woman writer are 2.1x, 2.4x, and 1.7x as likely to be hated than their corresponding counterparts, respectively.  
 * Auteur: Across all three Metascore groups, <font size = "3"> <strong> Auteur movies are at least 1.6x more likely to be hated than non-Auteur movies. </strong> </font>    
-* Unfavourable films show the least correlation between IMDb hate and any of the movie traits. This supports the idea that critically disliked films <i> earn </i> their 1/10 ratings on IMDb; the hate is based on actual movie quality rather than any prejudice. 
-* Mixed films show the most correlations between IMDb hate and the considered movie traits. Perhaps when a movie is not great - as is the case for Mixed movies - it enables audience's biases and leads to harsher, more exaggerated ratings.
+* Unfavourable films show the <strong> least </strong> correlation between IMDb hate and any of the movie traits. This supports the idea that critically disliked films <i> earn </i> their 1/10 ratings on IMDb; the hate is based on actual movie quality rather than any prejudice. 
+* Mixed films show the <strong> most </strong> correlations between IMDb hate and the considered movie traits. Perhaps when a movie is not great - as is the case for Mixed movies - it enables audiences to act on their biases and leads to harsher, more exaggerated ratings.
         
 <br />           
 
@@ -609,7 +612,226 @@ div(
 
 ```
 \vspace{-5truemm}      
-<i> <font size = "1.5">  The bar plot above shows the different proportions of hated movies for each movie trait, within each Metacritic group. The dark bars represent movies that have the given trait, and light bars do not have it. For instance, the dark green bar at the very top right represents the proportion of Favourable horror movies that are Hated (28.05%), and the light green bar to the very left of it is the proportion of Favourable non-horror movies that are Hated (7.86%). Note: movie traits representing fewer than 30 movies in our sample are not shown.  </font>     </i>
+<i> <font size = "1.5">  The bar plot above shows the different proportions of Hated movies for each movie trait, within each Metascore group. The dark bars represent movies that have the given trait, and light bars do not have it. For instance, the dark green bar at the very top right represents the proportion of Favourable horror movies that are Hated (28.05%), and the light green bar to the very left of it is the proportion of Favourable non-horror movies that are Hated (7.86%). Note: movie traits representing fewer than 30 movies in our sample are not shown.  </font>     </i>
+
+<!-- ### Alternative approach: Finding mean/median proportion of 1/10 ratings per kind of movie -->
+
+<!-- ```{r, echo = FALSE} -->
+<!-- get_by_trait_average_hate <- function(movie_trait, all = FALSE){ -->
+<!--   all_movies_with_ratings_df50K_hate_all <- all_movies_with_ratings_df50K_hate %>%  -->
+<!--     group_by(Metascore_Score_Meaning, all_movies_with_ratings_df50K_hate[[movie_trait]]) %>%  -->
+<!--     summarise(num_of_movies = n(),  -->
+<!--               hate_mean = mean(Percentage_1_numeric),  -->
+<!--               hate_median = median(Percentage_1_numeric) -->
+<!--     ) %>% mutate(movie_trait = movie_trait) -->
+<!--   colnames(all_movies_with_ratings_df50K_hate_all)[2] <- "bin" -->
+<!--   all_movies_with_ratings_df50K_hate_all$rownames <- with(all_movies_with_ratings_df50K_hate_all, ifelse(bin == 0, paste0("Non-", movie_trait), movie_trait)) -->
+<!--   all_movies_with_ratings_df50K_hate_all -->
+<!-- } -->
+
+<!-- get_ttest_p_value <- function(average_hate_row_ls){ -->
+<!--   # average_hate_row_ls <- average_hate_wider_df[1,] -->
+<!--   movie_trait = average_hate_row_ls$movie_trait -->
+<!--   grp = average_hate_row_ls$Metascore_Score_Meaning -->
+<!--   movies = all_movies_with_ratings_df50K_hate %>% filter(Metascore_Score_Meaning == grp) -->
+
+<!--   p_value <- (with(movies, t.test(Percentage_1_numeric[movies[,movie_trait] == 1], Percentage_1_numeric[movies[,movie_trait] == 0])))$p.value -->
+<!--   average_hate_row_ls$p_value <- round(p_value, 3) -->
+<!--   average_hate_row_ls -->
+<!-- } -->
+
+<!-- average_hate_df <- get_by_trait_average_hate("Lead1_female") %>%   -->
+<!-- # ## Women-led -->
+<!-- # bind_rows(, -->
+
+<!-- ## Two-men-led -->
+<!-- bind_rows(get_by_trait_average_hate("Leads_male_male"), -->
+
+<!--           get_by_trait_average_hate("Leads_female_female"), -->
+
+<!-- ## Horror -->
+<!-- get_by_trait_average_hate("Horror_bin"), -->
+
+<!-- ## Drama -->
+<!-- get_by_trait_average_hate("Drama_bin"), -->
+
+<!-- ## Comedy -->
+<!-- get_by_trait_average_hate("Comedy_bin"), -->
+
+<!-- ## Action -->
+<!-- get_by_trait_average_hate("Action_bin"), -->
+
+<!-- ## Franchise -->
+<!-- get_by_trait_average_hate("Franchise_bin"), -->
+
+<!-- ## Woman Writer -->
+<!-- get_by_trait_average_hate("woman_writer_bin"), -->
+
+<!-- ## Woman Director -->
+<!-- get_by_trait_average_hate("woman_director_bin"), -->
+
+<!-- ## Auteur -->
+<!-- get_by_trait_average_hate("Auteur_bin") -->
+
+<!-- ) -->
+<!-- # most_hated_wider_df -->
+
+<!-- average_hate_wider_df <- average_hate_df %>% select(-rownames) %>% pivot_wider(names_from = bin, values_from = c(num_of_movies, hate_mean, hate_median)) -->
+
+<!-- average_hate_wider_df$metascore_group = with(average_hate_wider_df, ifelse(Metascore_Score_Meaning %>% str_detect("Favorable"), 2, ifelse(Metascore_Score_Meaning %>% str_detect("Mixed"), 1, 3))) -->
+
+<!-- average_hate_wider_ls <- split(average_hate_wider_df, seq(nrow(average_hate_wider_df))) -->
+<!-- average_hate_wider_df <- average_hate_wider_ls %>% map_df(get_ttest_p_value) %>% select(-c(ends_with("-1"))) -->
+
+<!-- # TTEST_PVALUE(average_hate_wider_df[1,]) -->
+
+<!-- sample_size_threshold <- 30 -->
+<!-- average_hate_wider_df$hate_mean_0_plot <- with(average_hate_wider_df, ifelse(num_of_movies_0 < sample_size_threshold | num_of_movies_1 < sample_size_threshold, 0, round(hate_mean_0, 4 ))) -->
+
+
+<!-- average_hate_wider_df$hate_mean_1_plot <- with(average_hate_wider_df, ifelse(num_of_movies_0 < sample_size_threshold | num_of_movies_1 < sample_size_threshold, 0, round(hate_mean_1, 4) )) -->
+
+<!-- average_hate_wider_df <- average_hate_wider_df %>% merge(movie_trait_df, all.x = TRUE) -->
+<!-- average_hate_wider_df$Delta <- with(average_hate_wider_df, hate_mean_1 - hate_mean_0) -->
+<!-- delta_table <- average_hate_wider_df %>%  -->
+<!--     filter(Metascore_Score_Meaning == metascore_groups[2]) %>% arrange( Delta) %>% as.data.frame() %>% select(movie_trait_readable, Delta) %>% unique() -->
+
+<!-- average_hate_wider_df$movie_trait_readable <- factor(average_hate_wider_df$movie_trait_readable, levels = delta_table$movie_trait_readable) -->
+
+<!-- ``` -->
+
+<!-- ```{r, include = FALSE} -->
+
+<!-- fig1 <- plot_ly(data= average_hate_wider_df %>% filter(Metascore_Score_Meaning == metascore_groups[2]), x = ~movie_trait_readable, y = ~hate_mean_0_plot, type = 'bar', name = "Doesn't have movie trait", marker = list(color = "#96ceb4"), -->
+<!--                  text = ~num_of_movies_0, -->
+<!--                 # text2 = ~p_value , -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>Non-", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_0, "<br>", -->
+<!--                           "<b>", hate_mean_0_plot, "</b> are among the 100 most hated <i>Favourable</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+<!-- # , -->
+<!-- #            hovertemplate = "%{hovertext}<extra></extra>") -->
+<!-- #                 hovertemplate = paste( -->
+<!-- #                         '<br><b>Non-%{x}</b><br>', -->
+<!-- #                        'Number of movies: %{text}', -->
+<!-- #                 '<i>\n</i>%{y:.2f}% are among the 100 most hated Favourable films', -->
+<!-- #                 'Chi-sq p-value:', ~p_value -->
+<!-- #                 )) -->
+
+<!-- fig1 <- fig1 %>% add_trace(y = ~hate_mean_1_plot, name = 'Has movie trait', marker = list(color = "#86af49"), -->
+<!--                  text = ~num_of_movies_1, -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_1, "<br>", -->
+<!--                           "<b>", hate_mean_1_plot, "</b> are among the 100 most hated <i>Favourable</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+
+<!-- fig1 <- fig1 %>% layout( -->
+<!--                title = "Sales by Parts of Supermarket 2019 vs 2020", -->
+<!--                xaxis = list(title = "Movie Trait?", showticklabels = FALSE), -->
+<!--                yaxis = list(title = ' \n Favourable' #, -->
+<!--                             # showgrid = FALSE -->
+<!--                             , range=c(0,5), -->
+<!--                             tickfont = list(color = '#b2b2b2')),  -->
+<!--                barmode = 'group', -->
+<!--                # plot_bgcolor='#deeaee', -->
+<!--               scene = list(aspectratio = list(x=1, y=1, z=1))# right margin: 10px -->
+<!--               # , legend = list(orientation = "h",   # show entries horizontally -->
+<!--               #        xanchor = "center",  # use center of legend as anchor -->
+<!--               #        x = 0.5) -->
+<!--               , legend = list(x = 0, y = 0.96, orientation = "h") -->
+<!--     )  -->
+
+<!-- fig2 <- plot_ly(data= average_hate_wider_df %>% filter(Metascore_Score_Meaning == metascore_groups[1]), x = ~movie_trait_readable, y = ~hate_mean_0_plot, type = 'bar', name = 'No', marker = list(color = '#EEDC82'), -->
+<!--                  text = ~num_of_movies_0, -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>Non-", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_0, "<br>", -->
+<!--                           "<b>", hate_mean_0_plot, "</b> are among the 100 most hated <i>Mixed</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+
+<!-- fig2 <- fig2 %>% add_trace(y = ~hate_mean_1_plot, name = 'Yes', marker = list(color = '#DAA520'), -->
+<!--                  text = ~num_of_movies_1, -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_1, "<br>", -->
+<!--                           "<b>", hate_mean_1_plot, "</b> are among the 100 most hated <i>Mixed</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+
+<!-- fig2 <- fig2 %>% layout( -->
+<!--                title = "Top 100 ", -->
+<!--                xaxis = list(title = "Movie Trait?", showticklabels = FALSE), -->
+<!--                yaxis = list(title = '<b> Mean hate </b> \n Mixed' #, -->
+<!--                             # showgrid = FALSE -->
+<!--                             , range=c(0,5), -->
+<!--                             tickfont = list(color = '#b2b2b2')),  -->
+<!--                barmode = 'group' #, -->
+<!--                # plot_bgcolor='#daebe8', -->
+<!--         #        margin=list( -->
+<!--         # t=2, # top margin: 30px, you want to leave around 30 pixels to -->
+<!--         #       # display the modebar above the graph. -->
+<!--         #  b=2 #, # bottom margin: 10px -->
+<!--         # # l=2, # left margin: 10px -->
+<!--         # # r=2 -->
+<!--         # ) -->
+<!--                # , legend = list(x =- 0.5, y = 1.2, orientation = "h") -->
+<!--         ) -->
+
+<!-- fig3 <- plot_ly(data= average_hate_wider_df %>% filter(Metascore_Score_Meaning == metascore_groups[3]), x = ~movie_trait_readable, y = ~hate_mean_0_plot, type = 'bar', name = 'No', marker = list(color = '#f7cac9'), -->
+<!--                  text = ~num_of_movies_0, -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>Non-", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_0, "<br>", -->
+<!--                           "<b>", hate_mean_0_plot, "</b> are among the 100 most hated <i>Unfavourable</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+
+<!-- fig3 <- fig3 %>% add_trace(y = ~hate_mean_1_plot, name = 'Yes', marker = list(color = '#bc5a45'), -->
+<!--                  text = ~num_of_movies_1, -->
+<!--                 textposition = "none", -->
+<!--                 hovertext = ~ paste0("<br><b>", `movie_trait_readable`, "</b><br>",  -->
+<!--                           "Number of movies: ", num_of_movies_1, "<br>", -->
+<!--                           "<b>", hate_mean_1_plot, "</b> are among the 100 most hated <i>Unfavourable</i> films <br>", -->
+<!--                           'T-test p-value:', p_value -->
+<!-- ), -->
+<!-- hovertemplate = "%{hovertext}<extra></extra>") -->
+
+<!-- fig3 <- fig3 %>% layout( -->
+<!--                title = "<b> Mean hate, by Movie Trait </b> - <i> \n grouped by Metacritics Reception</i> \n \n", -->
+<!--                xaxis = list(title = "Movie Trait", tickangle = 45), -->
+<!--                yaxis = list(title = ' \n Unfavourable' #, -->
+<!--                             # showgrid = FALSE -->
+<!--                             , range=c(0,8), -->
+<!--                             tickfont = list(color = '#b2b2b2')),  -->
+<!--                barmode = 'group',  -->
+<!--                # plot_bgcolor='#f0efef', -->
+<!--                margin=list( -->
+<!--          # top margin: 30px, you want to leave around 30 pixels to -->
+<!--               # display the modebar above the graph. -->
+<!--         # b=2 #, # bottom margin: 10px -->
+<!--         # l=2, # left margin: 10px -->
+<!--         # r=2 -->
+<!--         ) -->
+<!--         # , legend = list(x = 0.7, y = 1, orientation = "v") -->
+<!--                ) -->
+
+<!-- ``` -->
+
+<!-- ```{r, echo = FALSE} -->
+<!-- div( -->
+<!--   subplot(fig1, style(fig2, showlegend = F), style(fig3, showlegend = F), nrows = 3, titleY = TRUE) %>% layout(xaxis = list(tickangle = 45, title = "\n \n \n \n \n <b>  Movie Trait </b>", anchor="y3", yanchor = "bottom")), align = "right" -->
+<!--   ) -->
+<!-- ``` -->
 
 <!-- <font size = "1"> <i> Bar plot showing the different proportions of hated movies for each movie trait, within each Metacritic group, is shown above. The dark bars represent movies that have the given trait, and light bars do not have it. For instance, the dark green bar at the very top right represent the proportion of Favourable horror movies that are Hated (28.05%), and the light green bar to the very left of it is the proportion of Favourable non-horror movies that are Hated (7.86%). Note: movie traits representing fewer than 30 movies in our sample are not shown." </i> </font>      -->
 
@@ -618,20 +840,20 @@ div(
 ### Gender biases
 Critically acclaimed movies are way more likely to be hated when the lead actor is a woman than when they're not a woman. Movies that have mixed reviews from critics, ie that are not great but not terrible, reveal even more gender-based biases; they are more likely to be hated when i) the lead actor is a woman, ii) the two lead actors are women, and also when iiii) one of the writers is a woman.    
 
-It was also insightful to look at the not-so-great man-led movies, which don't get punished as much as the not-so-great woman-led movies. These critically average movies reveal more gender-based biases than the critically acclaimed ones; they are more likely to be hated when i) the lead actor is a woman, ii) the two lead actors are women, and also when iiii) one of the writers is a woman.
+Two movies really punctuate the analysis for me: [Entourage (2015)](https://www.imdb.com/title/tt1674771/?ref_=nv_sr_srsg_3) vs [Sex and the City (2008)](https://www.imdb.com/title/tt1000774/?ref_=nv_sr_srsg_3). Both are spin-off films of their respective highly successful TV shows of the same name; one stars all men and the other all women. They are so comparable that Entourage is often described as "Sex and the City for guys". Since the films' releases, Entourage was critically disliked and grossed ~ 1.6x its budget whereas Sex and the City had mixed reviews, grossed ~ 6x its budget, and got a sequel film. And yet, despite the latter being more critically AND commercially liked, it suffers from an abysmal 10.6% of its IMDb ratings being 1/10. In contrast, only 3.0% of Entourage's ratings are 1/10. 
 
-There are two movies that, when compared, really punctuate the analysis for me: [Entourage (2015)](https://www.imdb.com/title/tt1674771/?ref_=nv_sr_srsg_3) vs [Sex and the City (2008)](https://www.imdb.com/title/tt1000774/?ref_=nv_sr_srsg_3). Both are spin-off films of their respective highly successful TV shows of the same name; one stars all men and the other all women. They are so comparable that Entourage is often described as "Sex and the City for guys". Since the films' releases, Entourage was critically disliked and grossed ~ 1.6x its budget whereas Sex and the City had mixed reviews, grossed ~ 6x its budget, and got a sequel film. And yet, despite the latter being more critically AND commercially liked, it suffers from an abysmal 10.6% of its IMDb ratings being 1/10. In contrast, only 3.0% of Entourage's ratings are 1/10.    
-
-In conclusion, yes Wonder Woman wasn't hated. That's great. It doesn't contradict the result that woman-led films are hated than man-led films, a finding made more unfortunate by the fact that more movies star men than women (though I'm sure this is not a coincidence). As a next step, I would like to dig into why Wonder Woman wasn't met with as much hate. What about Wonder Woman and Kill Bill made them okay to IMDb voters? 
+Yes, Wonder Woman wasn't hated. That's great. It doesn't contradict the result that woman-led films encounter, in general, more hate than man-led films. As a next step, I would want to directly answer to the "what about Wonder Woman and Kill Bill" crowd, and dig into only the woman-led films. What variables do hated woman-led films share that non-hated ones don't, and what variables do non-hated films share that hated ones don't? From this analysis already, we can explain the discrepancy between Wonder Woman/ Kill Bill and Ghostbusters/She-Hulk that they're better movies - if we trust the Metascore - and so biases are less likely to be enabled. 
 
 ### Horror and Auteur biases
-Critically liked horror films and auteur movies seem to attract more hate than normal as well. From my experience, some horror fans just want to be scared or to have fun, and don't care so much for a well-crafted narrative. That's the best explanation I got for horror. I find the results on auteur movies interesting as it's the variable I created with the most personal discretion.   
+Critically liked horror films and auteur movies seem to attract more hate than normal as well. From my experience, some horror fans just want to be scared or to have fun, and don't care so much for a well-crafted narrative. That's the best explanation I got for the horror hate. I find the results on auteur movies interesting as it's the variable I created with the most personal discretion.   
 
 Auteur cinema has a specific definition in the film world ([source](https://en.wikipedia.org/wiki/Auteur)), but I defined it a little differently to better leverage the data scraped from IMDb. Here, an Auteur movie is any film in which one of the writers directed the movie. That is, someone both (co-)wrote and (co-)directed the movie. Since this person has so much control over the film, one might expect Auteur movies to be more distinct, focused, and/or stylized. This can make bad movies more memorable, striking, or polarizing, explaining why they receive a particularly disproportionate amount of hate from IMDb users.
 
 ### Limitations 
 
-This analysis makes some generalizations. It generalizes the top 100 hated films, even though the range of hate can vary even within the top 100. It also misses some specific biases that are only visible for one or two films. For instance, The [Promise (2016)](https://www.imdb.com/title/tt4776998/ratings/?ref_=tt_ov_rt) is the critically mixed film with the second highest proportion of 1/10 ratings: 40.6%. This is not a Horror movie, nor is it woman-led. It's a movie about the Armenian genocide that sparked a lot of political opposition from specific groups (genocide-deniers) that review-bombed the film. If you take a look at its entire rating distribution, it boasts a 48.7% of ratings that are 10/10 - making it one of the most beloved films on IMDb as well. Also in the top hated films, we see live-action remakes of animated classics, like [Dragon-Ball: Evolution (2009)](https://www.imdb.com/title/tt1098327/?ref_=nv_sr_srsg_0) and [The Last Airbender (2010)](https://www.imdb.com/title/tt0938283/?ref_=nv_sr_srsg_3). These examples are meant to illustrate what we lose by looking at averages and summary plots.  
+This analysis makes some generalizations. 
+
+It generalizes the top 100 hated films, even though the range of hate can vary even within the top 100. It also misses some specific biases that are only visible for one or two films. For instance, The [Promise (2016)](https://www.imdb.com/title/tt4776998/ratings/?ref_=tt_ov_rt) is the critically mixed film with the second highest proportion of 1/10 ratings: 40.6%. This is not a Horror movie, nor is it woman-led. It's a movie about the Armenian genocide that sparked a lot of political opposition from specific groups (genocide-deniers) that review-bombed the film. If you take a look at its entire rating distribution, it boasts a 48.7% of ratings that are 10/10 - making it one of the most beloved films on IMDb as well. Also in the top hated films, we see live-action remakes of animated classics, like [Dragon-Ball: Evolution (2009)](https://www.imdb.com/title/tt1098327/?ref_=nv_sr_srsg_0) and [The Last Airbender (2010)](https://www.imdb.com/title/tt0938283/?ref_=nv_sr_srsg_3). These examples are meant to illustrate the information we lose by looking at summary metrics and plots.  
 
 In this vein I encourage you to explore the top 100 most hated films ([Table 2](Table 2: 100 Most Hated films on IMDb])) and top 100 least hated ([Table 3](Table 3: 100 Least Hated films on IMDb)), per Metacritic Reception, and feel free to comment what you find: 
 
@@ -839,6 +1061,34 @@ movie_trait_definitions_df <- movie_trait_df %>% mutate(definition = c("The firs
 ```{r, echo = FALSE}
 datatable(movie_trait_definitions_df %>% select(movie_trait_readable, definition) %>% rename("Movie Trait" = movie_trait_readable, "Definition" = definition), caption = "Table 4: Glossary of Movie Traits", options = list(pageLength = 11), escape = FALSE)
 ```
+
+<!-- ### Regression -->
+<!-- ```{r, include = FALSE} -->
+<!-- lm_favourable <- with(all_movies_with_ratings_df50K_hate %>% filter(Metascore_Score_Meaning == metascore_groups[2]), glm(Most_hated_bin ~ Horror_bin + Lead1_female + Auteur_bin, family = "binomial")) -->
+<!-- summary(lm_favourable) -->
+
+<!-- all_movies_with_ratings_df50K_hate$pred_prob <- with(all_movies_with_ratings_df50K_hate, ifelse(Metascore_Score_Meaning == metascore_groups[2], fitted(lm_favourable, all_movies_with_ratings_df50K_hate  %>% filter(Metascore_Score_Meaning == metascore_groups[2])), NA)) -->
+
+
+<!-- lm_mixed <- with(all_movies_with_ratings_df50K_hate %>% filter(Metascore_Score_Meaning == metascore_groups[1]), glm(Most_hated_bin ~ Horror_bin + Lead1_female + Auteur_bin + woman_writer_bin + Franchise_bin, family = "binomial")) -->
+<!-- summary(lm_mixed) -->
+
+<!-- lm_unfavourable <- with(all_movies_with_ratings_df50K_hate %>% filter(Metascore_Score_Meaning == metascore_groups[3]), glm(Most_hated_bin ~ Auteur_bin, family = "binomial")) -->
+<!-- summary(lm_unfavourable) -->
+
+<!-- all_movies_with_ratings_df50K_hate$pred_prob <- with(all_movies_with_ratings_df50K_hate, ifelse(Metascore_Score_Meaning == metascore_groups[1], fitted(lm_mixed, all_movies_with_ratings_df50K_hate  %>% filter(Metascore_Score_Meaning == metascore_groups[1])), pred_prob)) -->
+
+
+
+<!-- all_movies_with_ratings_df50K_hate$pred_prob <- with(all_movies_with_ratings_df50K_hate, ifelse(Metascore_Score_Meaning == metascore_groups[3], fitted(lm_unfavourable, all_movies_with_ratings_df50K_hate  %>% filter(Metascore_Score_Meaning == metascore_groups[3])), pred_prob))                                                                                    -->
+
+<!-- all_movies_with_ratings_df50K_hate$Most_hated_bin_pred <- with(all_movies_with_ratings_df50K_hate, ifelse(pred_prob >= 0.4, 1, 0)) -->
+
+<!-- with(all_movies_with_ratings_df50K_hate,  -->
+<!--      table(Most_hated_bin, Most_hated_bin_pred) -->
+<!-- ) -->
+<!-- ``` -->
+
 
 ```{r, include = FALSE}
 # <!-- Out of the 2417 movies released in 2000-2019 with 50,000 or more ratings on IMDb, we order them by proportion of IMDb ratings equal to 1/10. For instance, the Disaster Movie (2008), has been rated 91 thousand times on IMDb, and 60.8% of these ratings are equal to 1/10 on IMDb. No other movie has had as great a proportion of 1/10's and so The Disaster Movie would be first in our table. We find the top 100 such movies and compare them to the bottom 100 movies (films with the lowest proportion of 1/10 ratings) to identify any noticeable differences between movies the most and least hated movies by IMDb users. As previously stated, this analysis is done separately for movies with an Unfavourable metascore, a Mixed metascore, and a Favourable metascore.  -->

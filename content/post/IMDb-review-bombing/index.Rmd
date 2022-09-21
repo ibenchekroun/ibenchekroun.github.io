@@ -846,6 +846,27 @@ movie_trait_definitions_df <- movie_trait_df %>% mutate(definition = c("The firs
 datatable(movie_trait_definitions_df %>% select(movie_trait_readable, definition) %>% rename("Movie Trait" = movie_trait_readable, "Definition" = definition), caption = "Table 4: Glossary of Movie Traits", options = list(pageLength = 11), escape = FALSE)
 ```
 
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = '/post/imdb-review-bombing/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-everythingeverywhereallinr-netlify-app.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
 ```{r, include = FALSE}
 # <!-- Out of the 2417 movies released in 2000-2019 with 50,000 or more ratings on IMDb, we order them by proportion of IMDb ratings equal to 1/10. For instance, the Disaster Movie (2008), has been rated 91 thousand times on IMDb, and 60.8% of these ratings are equal to 1/10 on IMDb. No other movie has had as great a proportion of 1/10's and so The Disaster Movie would be first in our table. We find the top 100 such movies and compare them to the bottom 100 movies (films with the lowest proportion of 1/10 ratings) to identify any noticeable differences between movies the most and least hated movies by IMDb users. As previously stated, this analysis is done separately for movies with an Unfavourable metascore, a Mixed metascore, and a Favourable metascore.  -->
 # 

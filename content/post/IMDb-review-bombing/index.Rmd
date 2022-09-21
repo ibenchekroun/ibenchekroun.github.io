@@ -586,6 +586,7 @@ fig3 <- fig3 %>% layout(
                )
 
 ```
+</font>
 
 ## Results
 * Horror: <font size = "3"> <strong> Favourable Horror films are 3.6x as likely to be hated as Favourable non-Horror films. </strong> </font> This stark difference is also observed in Mixed movies.   

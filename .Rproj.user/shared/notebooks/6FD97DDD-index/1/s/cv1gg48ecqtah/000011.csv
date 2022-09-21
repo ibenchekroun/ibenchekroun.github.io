@@ -1,0 +1,5 @@
+"0","# text <- ""Bar plot showing the different proportions of hated movies for each movie trait, within each Metacritic group, is shown above. The dark bars represent movies that have the given trait, and light bars do not have it. For instance, the dark green bar at the very top right represent the proportion of Favourable horror movies that are Hated (28.05%), and the light green bar to the very left of it is the proportion of Favourable non-horror movies that are Hated (7.86%). Note: movie traits representing fewer than 30 movies in our sample are not shown."""
+"0",""
+"0","div("
+"0","  subplot(fig1, style(fig2, showlegend = F), style(fig3, showlegend = F), nrows = 3, titleY = TRUE) %>% layout(xaxis = list(tickangle = 45, title = ""\n \n \n \n \n <b>  Movie Trait </b>"", anchor=""y3"", yanchor = ""bottom"")), align = ""right"""
+"0","  )"

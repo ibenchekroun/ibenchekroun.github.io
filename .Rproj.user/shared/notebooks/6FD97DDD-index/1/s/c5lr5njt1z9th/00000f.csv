@@ -1,0 +1,7 @@
+"0","extreme_100_summarised_pivoted_df2 <- extreme_100_summarised_pivoted_df  %>%"
+"0","  pivot_longer(!c(Metascore_Score_Meaning, Movie_Trait, Delta), names_to = ""IMDb_Hate"", values_to = ""Proportion"")"
+"0",""
+"0","delta_table <- extreme_100_summarised_pivoted_df2 %>% "
+"0","    filter(Metascore_Score_Meaning == metascore_groups[2]) %>% arrange( Delta) %>% as.data.frame() %>% select(Movie_Trait, Delta) %>% unique()"
+"0",""
+"0","extreme_100_summarised_pivoted_df$Movie_Trait <- factor(extreme_100_summarised_pivoted_df$Movie_Trait, levels = delta_table$Movie_Trait)"

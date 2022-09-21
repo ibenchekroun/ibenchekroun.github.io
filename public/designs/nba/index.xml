@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NBA on Everything Everywhere all in R</title>
+    <link>/designs/nba/</link>
+    <description>Recent content in NBA on Everything Everywhere all in R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/designs/nba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hindsight 2022 - NBA Fantasy Dashboard</title>
+      <link>/portfolio/hindsight2022/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/hindsight2022/</guid>
+      <description>This dashboard calculates your NBA fantasy team&amp;rsquo;s performance against an opposing team, given the players you input for both teams and given the week of performance. It&amp;rsquo;s purely historical data; the performance shows you how your team would have faired in a past week. I found it useful personally for deciding whether I should drop a specific player to pick up another specific player, in preparation for my next week&amp;rsquo;s matchup.</description>
+    </item>
+    
+  </channel>
+</rss>

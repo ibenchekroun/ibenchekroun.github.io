@@ -1,7 +1,0 @@
-"0"," #                                                                                                             annotations = "
-"0"," # list(yanchor = ""bottom"", "
-"0"," #      text = text, "
-"0"," #      showarrow = F, xref='paper', yref='paper', "
-"0"," #      xshift=0, yshift=0,"
-"0"," #      font=list(size=5, color=""red"")))"
-"0",""

@@ -1,5 +1,0 @@
-"0","months_ordered <- c(""January"", ""February"", ""March"", ""April"", ""May"", ""June"", ""July"", ""August"", ""September"", ""October"", ""November"", ""December"")"
-"0","all_movies_with_ratings_df$Release_month <- with(all_movies_with_ratings_df, ifelse(Release_month %in% months_ordered, Release_month, ""NA""))"
-"0","all_movies_with_ratings_df$Release_month <- with(all_movies_with_ratings_df, factor(Release_month, levels = c(""NA"", months_ordered)))"
-"0","all_movies_with_ratings_df$Metascore_Score_Meaning <- with(all_movies_with_ratings_df, ifelse(Metascore_rating > 60, ""Favourable Reviews (61-100)"", ifelse(Metascore_rating > 39, ""Mixed Reviews (40-60)"", ""Unfavourable Reviews (0-39)""))) %>% as.factor()"
-"0",""

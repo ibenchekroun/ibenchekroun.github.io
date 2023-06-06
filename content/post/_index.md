@@ -5,4 +5,4 @@ title: Blog
 
 Exploratory data analyses
 
-[Post 1: IMDb Review Bombing](/IMDb-review-bombing)
+[Post 1: IMDb Review Bombing](/post/IMDb-review-bombing)

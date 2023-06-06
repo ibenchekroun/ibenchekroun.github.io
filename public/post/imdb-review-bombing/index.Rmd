@@ -1,10 +1,11 @@
 ---
 title: "Investigating IMDb review bombing"
 author: "Ismail Benchekroun"
-date: "2022-08-30"
+date: "2022-09-14"
 output:
   html_document: default
   pdf_document: default
+always_allow_html: true
 ---
 
 ```{r setup, include=FALSE}
@@ -586,6 +587,7 @@ fig3 <- fig3 %>% layout(
                )
 
 ```
+</font>
 
 ## Results
 * Horror: <font size = "3"> <strong> Favourable Horror films are 3.6x as likely to be hated as Favourable non-Horror films. </strong> </font> This stark difference is also observed in Mixed movies.   
@@ -624,7 +626,8 @@ Critically acclaimed movies are way more likely to be hated when the lead actor 
 
 Two movies really punctuate the analysis for me: [Entourage (2015)](https://www.imdb.com/title/tt1674771/?ref_=nv_sr_srsg_3) vs [Sex and the City (2008)](https://www.imdb.com/title/tt1000774/?ref_=nv_sr_srsg_3). Both are spin-off films of their respective highly successful TV shows of the same name; one stars all men and the other all women. They are so comparable that Entourage is often described as “Sex and the City for guys”. Since the films’ releases, Entourage was critically disliked and grossed ~ 1.6x its budget whereas Sex and the City had mixed reviews, grossed ~ 6x its budget, and got a sequel film. And yet, despite the latter being more critically AND commercially liked, it suffers from an abysmal 10.6% of its IMDb ratings being 1/10. In contrast, only 3.0% of Entourage’s ratings are 1/10.
 
-Yes, Wonder Woman wasn’t hated. That’s great. It doesn’t contradict the result that woman-led films encounter, in general, more hate than man-led films. As a next step, I would want to directly answer to the “what about Wonder Woman and Kill Bill” crowd, and dig into only the woman-led films. What variables do hated woman-led films share that non-hated ones don’t, and what variables do non-hated films share that hated ones don’t? From this analysis already, we can explain the discrepancy between Wonder Woman/ Kill Bill and Ghostbusters/She-Hulk that they’re better movies - if we trust the Metascore - and so biases are less likely to be enabled.
+Yes, Wonder Woman wasn’t hated. That’s great. It doesn’t contradict the result that woman-led films encounter, in general, more hate than man-led films. As a next step, I would want to directly answer to the “what about Wonder Woman and Kill Bill” crowd, and dig into only the woman-led films. What variables do hated woman-led films share that non-hated ones don’t, and what variables do non-hated films share that hated ones don’t? 
+<!-- From this analysis already, we can explain the discrepancy between Wonder Woman/ Kill Bill and Ghostbusters/She-Hulk that they’re better movies - if we trust the Metascore - and so biases are less likely to be enabled. -->
 
 ### Horror and Auteur biases
 Critically liked horror films and auteur movies seem to attract more hate than normal as well. From my experience, some horror fans just want to be scared or to have fun, and don’t care so much for a well-crafted narrative. That’s the best explanation I got for the horror hate. I find the results on auteur movies interesting as it’s the variable I created with the most personal discretion.
@@ -637,7 +640,7 @@ This analysis makes some generalizations.
 
 It generalizes the top 100 hated films, even though the range of hate can vary even within the top 100. It also misses some specific biases that are only visible for one or two films. For instance, [The Promise (2016)](https://www.imdb.com/title/tt4776998/ratings/?ref_=tt_ov_rt) is the critically mixed film with the second highest proportion of 1/10 ratings: 40.6%. This is not a Horror movie, nor is it woman-led. It’s a movie about the Armenian genocide that sparked a lot of political opposition from specific groups (genocide-deniers) that review-bombed the film. If you take a look at its entire rating distribution, it boasts a 48.7% of ratings that are 10/10 - making it one of the most beloved films on IMDb as well. Also in the top hated films, we see live-action remakes of animated classics, like [Dragon-Ball: Evolution (2009)](https://www.imdb.com/title/tt1098327/?ref_=nv_sr_srsg_0) and [The Last Airbender (2010)](https://www.imdb.com/title/tt0938283/?ref_=nv_sr_srsg_3). These examples are meant to illustrate the information we lose by looking at summary metrics and plots.
 
-In this vein I encourage you to explore the top 100 most hated films ([Table 2](Table 2: 100 Most Hated films on IMDb])) and top 100 least hated ([Table 3](Table 3: 100 Least Hated films on IMDb)), per Metacritic Reception, and feel free to comment what you find: 
+In this vein I encourage you to explore the top 100 most hated films ([Table 2](#table-2-100-most-hated-films-on-imdb)) and top 100 least hated ([Table 3](#table-3-100-least-hated-films-on-imdb)) per Metacritic Reception, and feel free to comment what you find: 
 
 ### Table 2: 100 Most Hated films on IMDb
 ```{r, echo = FALSE}
@@ -843,6 +846,27 @@ movie_trait_definitions_df <- movie_trait_df %>% mutate(definition = c("The firs
 ```{r, echo = FALSE}
 datatable(movie_trait_definitions_df %>% select(movie_trait_readable, definition) %>% rename("Movie Trait" = movie_trait_readable, "Definition" = definition), caption = "Table 4: Glossary of Movie Traits", options = list(pageLength = 11), escape = FALSE)
 ```
+
+
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = '/post/imdb-review-bombing/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-everythingeverywhereallinr-netlify-app.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 ```{r, include = FALSE}
 # <!-- Out of the 2417 movies released in 2000-2019 with 50,000 or more ratings on IMDb, we order them by proportion of IMDb ratings equal to 1/10. For instance, the Disaster Movie (2008), has been rated 91 thousand times on IMDb, and 60.8% of these ratings are equal to 1/10 on IMDb. No other movie has had as great a proportion of 1/10's and so The Disaster Movie would be first in our table. We find the top 100 such movies and compare them to the bottom 100 movies (films with the lowest proportion of 1/10 ratings) to identify any noticeable differences between movies the most and least hated movies by IMDb users. As previously stated, this analysis is done separately for movies with an Unfavourable metascore, a Mixed metascore, and a Favourable metascore.  -->
